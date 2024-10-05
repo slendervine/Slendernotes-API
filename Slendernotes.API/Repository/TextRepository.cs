@@ -43,5 +43,15 @@ namespace Slendernotes.API.Repository
 
             return ResultRepository.Ok(textList);
         }
+
+        public Task<ResultRepository<Text>> Create()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ResultRepository> Delete()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

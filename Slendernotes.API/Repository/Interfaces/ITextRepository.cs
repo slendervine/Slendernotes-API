@@ -8,5 +8,7 @@ namespace Slendernotes.API.Repository.Interfaces
     {
         Task<ResultRepository<Text>> GetById(Guid id);
         Task<ResultRepository<List<Text>>> GetAll();
+        Task<ResultRepository<Text>> Create();
+        Task<ResultRepository> Delete();
     }
 }
