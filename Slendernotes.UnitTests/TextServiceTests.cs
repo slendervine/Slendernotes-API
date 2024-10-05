@@ -21,17 +21,23 @@ namespace Slendernotes.UnitTests
         }
 
         
-        [Fact]
-        public async void CreateAsync_ShouldReturnResultServiceWithTextDetails_WhenSuccess()
-        {
-            //Arrenge
-            TextDetails textDetails = new();
+        //[Fact]
+        //public async void CreateAsync_ShouldReturnResultServiceWithTextDetails_WhenSuccess()
+        //{
+        //    //Arrenge
+        //    TextDetails textDetails = new();
+        //    ResultService<TextDetails> expectedResult = new ResultService<TextDetails>();
+        //
+        //    //aqui precisa criar o command do create
+        //
+        //
+        //    //Act
+        //    _mediator.Send(/*aqui precisa passar como parametro o Command do Create, ainda n fiz*/).Returns(expectedResult);
+        //    ResultService<TextDetails> result = await _textService.CreateAsync();
+        //
+        //    //Assert
+        //    Assert.Equal(ResultService.Ok(textDetails), result);
+        //}
 
-            //Act
-            ResultService<TextDetails> result = await _textService.CreateAsync();
-
-            //Assert
-            Assert.Equal(ResultService.Ok(textDetails), result);
-        }
     }
 }
