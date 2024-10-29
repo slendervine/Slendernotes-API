@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Slendernotes.API.DTO.Response;
-using Slendernotes.API.Models;
+using Slendernotes.Domain.Entities;
 
 namespace Slendernotes.API.Mapping
 {

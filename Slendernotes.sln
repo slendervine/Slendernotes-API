@@ -5,7 +5,11 @@ VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slendernotes.API", "Slendernotes.API\Slendernotes.API.csproj", "{6397F0D9-4696-4AA9-8CCD-7D237B615740}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slendernotes.UnitTests", "Slendernotes.UnitTests\Slendernotes.UnitTests.csproj", "{20EEF536-4024-42B5-989C-CACA9B8560AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slendernotes.UnitTests", "Slendernotes.UnitTests\Slendernotes.UnitTests.csproj", "{20EEF536-4024-42B5-989C-CACA9B8560AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slendernotes.Domain", "Slendernotes.Domain\Slendernotes.Domain.csproj", "{D4F9FF41-0B55-4241-B279-BD248E8D4E3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slendernotes.Infrastructure", "Slendernotes.Infrastructure\Slendernotes.Infrastructure.csproj", "{5156E5AC-A6DD-476D-84B4-5708CA0B813F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{20EEF536-4024-42B5-989C-CACA9B8560AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20EEF536-4024-42B5-989C-CACA9B8560AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20EEF536-4024-42B5-989C-CACA9B8560AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4F9FF41-0B55-4241-B279-BD248E8D4E3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4F9FF41-0B55-4241-B279-BD248E8D4E3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4F9FF41-0B55-4241-B279-BD248E8D4E3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4F9FF41-0B55-4241-B279-BD248E8D4E3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5156E5AC-A6DD-476D-84B4-5708CA0B813F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5156E5AC-A6DD-476D-84B4-5708CA0B813F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5156E5AC-A6DD-476D-84B4-5708CA0B813F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5156E5AC-A6DD-476D-84B4-5708CA0B813F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
 using Slendernotes.API.DTO.Response;
-using Slendernotes.API.Models;
-using Slendernotes.API.Repository.Interfaces;
-using Slendernotes.API.Results;
+using Slendernotes.Domain.Entities;
+using Slendernotes.Domain.Common;
+using Slendernotes.Domain.IRepository;
 
 namespace Slendernotes.API.Queries.TextGetResumeAll
 {

@@ -1,22 +1,17 @@
-﻿using AutoMapper;
-using MongoDB.Driver;
-using Slendernotes.API.Common;
-using Slendernotes.API.DTO.Response;
-using Slendernotes.API.Models;
-using Slendernotes.API.Repository.Interfaces;
-using Slendernotes.API.Results;
-using System.Collections.Generic;
+﻿using MongoDB.Driver;
+using Slendernotes.Domain.Entities;
+using Slendernotes.Domain.Common;
+using Slendernotes.Domain.IRepository;
+using Slendernotes.Infrastructure.Persistence.Context;
 
 namespace Slendernotes.API.Repository
 {
     public class TextRepository : ITextRepository
     {
         private IMongoCollection<Text> _texts;
-        private IMapper _mapper;
-        public TextRepository(IMongoDatabase db, IMapper mapper)
+        public TextRepository(MongoDbContext context)
         {
-            _texts = db.GetCollection<Text>("Texts"); //collection de dentro do mongo
-            _mapper = mapper;
+            _texts = context.Texts; //nome da collection de dentro do mongo
         }
 
         public async Task<ResultRepository<Text>> GetById(Guid id)
@@ -44,14 +39,21 @@ namespace Slendernotes.API.Repository
             return ResultRepository.Ok(textList);
         }
 
-        public Task<ResultRepository<Text>> Create()
+        public async Task<ResultRepository> Create(Text text)
         {
-            throw new NotImplementedException();
+            await _texts.InsertOneAsync(text);
+            return ResultRepository.OperationCompleted();
         }
 
-        public Task<ResultRepository> Delete()
+        public async Task<ResultRepository> Delete(Guid id)
         {
-            throw new NotImplementedException();
+            FilterDefinition<Text> filter = Builders<Text>.Filter.Eq(x => x.Id, id);
+            DeleteResult deleteResult = await _texts.DeleteOneAsync(filter);
+
+            if (deleteResult.DeletedCount > 0)
+                return ResultRepository.OperationCompleted(true);
+
+            return ResultRepository.DeleteFailure();
         }
     }
 }

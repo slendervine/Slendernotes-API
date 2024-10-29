@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Slendernotes.API.DTO.Request;
 using Slendernotes.API.DTO.Response;
 using Slendernotes.API.Results;
 using Slendernotes.API.Services.Interfaces;
@@ -65,7 +66,29 @@ namespace Slendernotes.API.Controllers
             return Ok(ResultApplication.Ok(result.Data));
         }
 
-        
+        [HttpPost]
+        public async Task<ActionResult<ResultApplication<Guid>>> Create([FromBody] TextCreateDTO dataDTO)
+        {
+            var result = await _textService.CreateAsync(dataDTO);
+            if (!result.IsSuccess)
+            {
+                return BadRequest(ResultApplication.Fail<Guid>(result.Message));
+            }
+
+            return Ok(ResultApplication.Ok(result.Data));
+        }
+
+        [HttpDelete("delete/{id}")]
+        public async Task<ActionResult<ResultApplication>> Delete(Guid id)
+        {
+            var result = await _textService.DeleteAsync(id);
+            if (!result.IsSuccess)
+            {
+                return BadRequest(ResultApplication.Fail(result.Message));
+            }
+
+            return Ok(ResultApplication.Ok(result.Message));
+        }
 
     }
 }

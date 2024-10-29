@@ -1,4 +1,4 @@
-﻿namespace Slendernotes.API.Results
+﻿namespace Slendernotes.Domain.Common
 {
     public class ResultRepository
     {
@@ -22,6 +22,9 @@
 
         public static ResultRepository Ok(string message) => new ResultRepository { IsSuccess = true, Message = message };
         public static ResultRepository<T> Ok<T>(T data) => new ResultRepository<T> { IsSuccess = true, Data = data };
+
+        public static ResultRepository OperationCompleted(string message = ResultMessages.OperationCompleted) => new ResultRepository { IsSuccess = true, Message = message };
+        public static ResultRepository<T> OperationCompleted<T>(T data) => new ResultRepository<T> { IsSuccess = true, Data = data };
     }
 
     public class ResultRepository<T> : ResultRepository

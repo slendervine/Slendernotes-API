@@ -1,8 +1,8 @@
-﻿using Slendernotes.API.Enums;
+﻿using Slendernotes.Domain.Enums;
 
 namespace Slendernotes.API.DTO.Request
 {
-    public class TextCreate
+    public class TextCreateDTO
     {
         public string TextBody { get; set; }
         public string Title { get; set; }

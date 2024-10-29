@@ -1,4 +1,5 @@
-﻿using Slendernotes.API.DTO.Response;
+﻿using Slendernotes.API.DTO.Request;
+using Slendernotes.API.DTO.Response;
 using Slendernotes.API.Results;
 
 namespace Slendernotes.API.Services.Interfaces
@@ -9,8 +10,8 @@ namespace Slendernotes.API.Services.Interfaces
         public Task<ResultService<TextDetails>> GetDetailsByIdAsync(Guid id);
         public Task<ResultService<List<TextResume>>> GetAllResumeAsync();
         public Task<ResultService<List<TextDetails>>> GetAllDetailsAsync();
-        public Task<ResultService<TextDetails>> CreateAsync();
-        public Task<ResultService> DeleteAsync();
+        public Task<ResultService<Guid>> CreateAsync(TextCreateDTO dataDTO);
+        public Task<ResultService> DeleteAsync(Guid id);
 
     }
 }

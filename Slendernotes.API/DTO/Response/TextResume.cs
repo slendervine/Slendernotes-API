@@ -1,4 +1,4 @@
-﻿using Slendernotes.API.Enums;
+﻿using Slendernotes.Domain.Enums;
 
 namespace Slendernotes.API.DTO.Response
 {

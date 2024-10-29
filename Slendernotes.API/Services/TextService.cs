@@ -6,6 +6,9 @@ using Slendernotes.API.Queries.TextGetDetails;
 using Slendernotes.API.Queries.TextGetResume;
 using Slendernotes.API.Results;
 using Slendernotes.API.Services.Interfaces;
+using Slendernotes.API.DTO.Request;
+using Slendernotes.API.Commands.TextCreate;
+using Slendernotes.API.Commands.TextDelete;
 
 namespace Slendernotes.API.Services
 {
@@ -80,14 +83,28 @@ namespace Slendernotes.API.Services
             }
         }
 
-        public Task<ResultService<TextDetails>> CreateAsync()
-        {
-            throw new NotImplementedException();
+        public async Task<ResultService<Guid>> CreateAsync(TextCreateDTO dataDTO)
+        {   
+            TextCreateCommand command = new(dataDTO);
+            var resultRepository = await _mediator.Send(command);
+            if (!resultRepository.IsSuccess)
+            {
+                return ResultService.Ok(resultRepository.Data);
+            }
+
+            return ResultService.Fail<Guid>(resultRepository.Message);
         }
 
-        public Task<ResultService> DeleteAsync()
+        public async Task<ResultService> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            TextDeleteCommand command = new(id);
+            var resultRepository = await _mediator.Send(command);
+            if (!resultRepository.IsSuccess)
+            {
+                return ResultService.Ok(resultRepository.Message);
+            }
+
+            return ResultService.Fail(resultRepository.Message);
         }
     }
 }

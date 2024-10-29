@@ -2,7 +2,7 @@
 
 namespace Slendernotes.API.Validations
 {
-    public class TextCreateValidator : AbstractValidator<DTO.Request.TextCreate>
+    public class TextCreateValidator : AbstractValidator<DTO.Request.TextCreateDTO>
     {
         private const string InvalidMessage = "O campo [{PropertyName}] é inválido";
         private const string EmptyFieldMessage = "O campo [{PropertyName}] não pode ser vazio";
@@ -16,7 +16,8 @@ namespace Slendernotes.API.Validations
 
             RuleFor(x => x.Title)
                 .NotEmpty()
-                .WithMessage(EmptyFieldMessage);
+                .WithMessage(EmptyFieldMessage)
+                .MaximumLength(100);
 
             RuleFor(x => x.Category)
                 .IsInEnum()

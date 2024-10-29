@@ -1,7 +1,7 @@
 using MediatR;
 using NSubstitute;
 using Slendernotes.API.DTO.Response;
-using Slendernotes.API.Repository.Interfaces;
+using Slendernotes.Domain.IRepository;
 using Slendernotes.API.Results;
 using Slendernotes.API.Services;
 using Slendernotes.API.Services.Interfaces;

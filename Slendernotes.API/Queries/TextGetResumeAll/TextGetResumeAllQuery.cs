@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Slendernotes.API.DTO.Response;
-using Slendernotes.API.Results;
+using Slendernotes.Domain.Common;
 
 namespace Slendernotes.API.Queries.TextGetResumeAll
 {

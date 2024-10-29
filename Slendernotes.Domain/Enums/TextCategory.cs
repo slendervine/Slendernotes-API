@@ -1,4 +1,4 @@
-﻿namespace Slendernotes.API.Enums
+﻿namespace Slendernotes.Domain.Enums
 {
     public enum TextCategory
     {
