@@ -9,6 +9,7 @@ using Slendernotes.API.Services.Interfaces;
 using Slendernotes.API.DTO.Request;
 using Slendernotes.API.Commands.TextCreate;
 using Slendernotes.API.Commands.TextDelete;
+using Slendernotes.Domain.Common;
 
 namespace Slendernotes.API.Services
 {
@@ -86,13 +87,13 @@ namespace Slendernotes.API.Services
         public async Task<ResultService<Guid>> CreateAsync(TextCreateDTO dataDTO)
         {   
             TextCreateCommand command = new(dataDTO);
-            var resultRepository = await _mediator.Send(command);
+            ResultRepository<Guid> resultRepository = await _mediator.Send(command);
             if (!resultRepository.IsSuccess)
             {
-                return ResultService.Ok(resultRepository.Data);
+                return ResultService.Fail<Guid>(resultRepository.Message);
             }
 
-            return ResultService.Fail<Guid>(resultRepository.Message);
+            return ResultService.Ok(resultRepository.Data);
         }
 
         public async Task<ResultService> DeleteAsync(Guid id)
@@ -101,10 +102,10 @@ namespace Slendernotes.API.Services
             var resultRepository = await _mediator.Send(command);
             if (!resultRepository.IsSuccess)
             {
-                return ResultService.Ok(resultRepository.Message);
+                return ResultService.Fail(resultRepository.Message);
             }
 
-            return ResultService.Fail(resultRepository.Message);
+            return ResultService.Ok(resultRepository.Message);
         }
     }
 }

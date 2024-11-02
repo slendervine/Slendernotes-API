@@ -1,5 +1,17 @@
 using MongoDB.Driver;
+using Slendernotes.API.Services;
+using Slendernotes.API.Services.Interfaces;
+using Slendernotes.API.Validations;
 using Slendernotes.Infrastructure.Persistence.Context;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Slendernotes.Domain.IRepository;
+using Slendernotes.API.Repository;
+using DotNetEnv;
+using Slendernotes.Infrastructure.Persistence.Settings;
+using MongoDB.Driver.Core.Configuration;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +22,37 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+// AutoMapper
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
+
+// MediatR
+builder.Services.AddMediatR(config =>
+    config.RegisterServicesFromAssembly(typeof(Program).Assembly));
+
+
 //MongoDB
-builder.Services.AddSingleton<IMongoClient>(new MongoClient(builder.Configuration["MongoDB:ConnectionString"]));
-builder.Services.AddSingleton<IMongoDatabase>(sp => sp.GetRequiredService<IMongoClient>().GetDatabase(builder.Configuration["MongoDB:DatabaseName"]));
+Env.Load();
+MongoSettings mongoSettings = new(); //Env propeties are inside this class
+
+
+builder.Services.AddSingleton<IMongoClient>(new MongoClient(mongoSettings.ConnectionString));
+builder.Services.AddSingleton<IMongoDatabase>(sp => sp.GetRequiredService<IMongoClient>().GetDatabase(mongoSettings.Database));
 builder.Services.AddSingleton<MongoDbContext>();
+
+
+//Validations
+builder.Services
+    .AddFluentValidationAutoValidation()
+    .AddValidatorsFromAssemblyContaining<TextCreateValidator>();
+
+
+//Injecting Interfaces
+builder.Services.AddScoped<ITextService, TextService>();
+builder.Services.AddScoped<ITextRepository, TextRepository>();
+
+
 
 var app = builder.Build();
 

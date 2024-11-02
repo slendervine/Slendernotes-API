@@ -67,12 +67,12 @@ namespace Slendernotes.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ResultApplication<Guid>>> Create([FromBody] TextCreateDTO dataDTO)
+        public async Task<ActionResult<ResultApplication<Guid?>>> Create([FromBody] TextCreateDTO dataDTO)
         {
             var result = await _textService.CreateAsync(dataDTO);
             if (!result.IsSuccess)
             {
-                return BadRequest(ResultApplication.Fail<Guid>(result.Message));
+                return BadRequest(ResultApplication.Fail<Guid?>(result.Message));
             }
 
             return Ok(ResultApplication.Ok(result.Data));
@@ -89,6 +89,18 @@ namespace Slendernotes.API.Controllers
 
             return Ok(ResultApplication.Ok(result.Message));
         }
+
+
+
+        //------------------------------|  SANDBOX  |-----------------------------\\
+        [HttpPost("sandbox")]
+        public  ActionResult<ResultApplication> Sandbox([FromBody] TextCreateDTO dataDTO)
+        {
+           
+
+            return Ok(ResultApplication.Ok(dataDTO));
+        }
+
 
     }
 }

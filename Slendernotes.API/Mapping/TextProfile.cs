@@ -8,8 +8,11 @@ namespace Slendernotes.API.Mapping
     {
         public TextProfile() 
         {
-            CreateMap<Text, TextDetails>();
-            CreateMap<Text, TextResume>();
+            CreateMap<Text, TextDetails>()
+                .ForMember(dest => dest.TextBody, opt => opt.MapFrom(src => src.TextContent != null ? src.TextContent.Value : null));
+
+            CreateMap<Text, TextResume>()
+                .ForMember(dest => dest.TextBody, opt => opt.MapFrom(src => src.TextContent.Value));
         }
 
     }

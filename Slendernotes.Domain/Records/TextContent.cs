@@ -42,7 +42,7 @@
 
         private bool CheckForInappropriateContent(string text)
         {
-            var inappropriateWords = new[] { "palavrão1", "palavrão2" };
+            var inappropriateWords = new[] { "bosta" };
             return inappropriateWords.Any(word => text.Contains(word, StringComparison.OrdinalIgnoreCase));
         }
     }
