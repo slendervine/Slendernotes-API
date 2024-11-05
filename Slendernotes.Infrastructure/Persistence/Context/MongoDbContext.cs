@@ -3,8 +3,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using Slendernotes.Domain.Abstractions;
-using Slendernotes.Domain.Entities;
-using Slendernotes.Domain.Records;
+using Slendernotes.Domain.Text;
 using Slendernotes.Infrastructure.Persistence.Mapping;
 
 namespace Slendernotes.Infrastructure.Persistence.Context

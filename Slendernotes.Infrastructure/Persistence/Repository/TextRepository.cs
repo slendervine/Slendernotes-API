@@ -1,8 +1,8 @@
 ﻿using MongoDB.Driver;
-using Slendernotes.Domain.Entities;
 using Slendernotes.Domain.Common;
 using Slendernotes.Domain.IRepository;
 using Slendernotes.Infrastructure.Persistence.Context;
+using Slendernotes.Domain.Text;
 
 namespace Slendernotes.API.Repository
 {

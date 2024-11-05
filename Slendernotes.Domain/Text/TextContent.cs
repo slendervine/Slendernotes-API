@@ -1,4 +1,4 @@
-﻿namespace Slendernotes.Domain.Records
+﻿namespace Slendernotes.Domain.Text
 {
     public record TextContent
     {

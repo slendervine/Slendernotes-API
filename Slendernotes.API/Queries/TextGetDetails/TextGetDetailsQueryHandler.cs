@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
 using Slendernotes.API.DTO.Response;
-using Slendernotes.Domain.Entities;
 using Slendernotes.Domain.IRepository;
 using Slendernotes.Domain.Common;
+using Slendernotes.Domain.Text;
 
 namespace Slendernotes.API.Queries.TextGetDetails
 {

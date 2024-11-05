@@ -1,4 +1,4 @@
-﻿using Slendernotes.Domain.Enums;
+﻿using Slendernotes.Domain.Text;
 
 namespace Slendernotes.API.DTO.Request
 {

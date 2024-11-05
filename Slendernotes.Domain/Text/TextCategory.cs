@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Slendernotes.Domain.Enums
+namespace Slendernotes.Domain.Text
 {
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum TextCategory

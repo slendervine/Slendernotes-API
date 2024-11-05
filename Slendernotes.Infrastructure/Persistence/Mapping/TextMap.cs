@@ -1,5 +1,4 @@
 ﻿using MongoDB.Bson.Serialization;
-using Slendernotes.Domain.Entities;
 
 namespace Slendernotes.Infrastructure.Persistence.Mapping
 {
