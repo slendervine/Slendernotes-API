@@ -6,7 +6,7 @@ namespace Slendernotes.Domain.Abstractions
     public abstract class Entity
     {
         public Guid Id { get; init; }
-        private readonly List<IDomainEvent> _domainEvents = new();
+        private List<IDomainEvent> _domainEvents = new();
 
         protected Entity(Guid id)
         {

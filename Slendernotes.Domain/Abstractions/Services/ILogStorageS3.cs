@@ -1,6 +1,6 @@
 ﻿using Slendernotes.Domain.Abstractions;
 
-namespace Slendernotes.API.Abstractions
+namespace Slendernotes.Domain.Abstractions.Services
 {
     public interface ILogStorageS3
     {

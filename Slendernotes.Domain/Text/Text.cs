@@ -21,9 +21,9 @@ namespace Slendernotes.Domain.Text
             Category = category;
             CreateDate = DateTime.UtcNow;
             UserId = userId;
-            Validate();
 
-            this.RaiseDomainEvents(new TextCreatedDomainEvent(id, userId));
+            Validate();
+            RaiseDomainEvents(new TextCreatedDomainEvent(id, userId));
         }
 
 

@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Slendernotes.API.Abstractions;
+using Slendernotes.Domain.Abstractions.Services;
 using Slendernotes.Domain.IRepository;
 using Slendernotes.Domain.Text.Events;
 
