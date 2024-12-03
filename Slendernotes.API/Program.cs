@@ -6,10 +6,11 @@ using Slendernotes.Infrastructure.Persistence.Context;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Slendernotes.Domain.IRepository;
-using Slendernotes.API.Repository;
 using DotNetEnv;
 using Slendernotes.Infrastructure.Persistence.Settings;
-using MongoDB.Driver.Core.Configuration;
+using Slendernotes.Infrastructure.Repository;
+using Slendernotes.Domain.Abstractions.Services;
+using Slendernotes.Infrastructure.Services;
 
 
 
@@ -51,6 +52,7 @@ builder.Services
 //Injecting Interfaces
 builder.Services.AddScoped<ITextService, TextService>();
 builder.Services.AddScoped<ITextRepository, TextRepository>();
+builder.Services.AddScoped<ILogStorageS3, LogStorageS3>();
 
 
 

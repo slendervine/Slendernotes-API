@@ -1,17 +1,21 @@
 ﻿using MongoDB.Driver;
-using Slendernotes.Domain.Entities;
 using Slendernotes.Domain.Common;
 using Slendernotes.Domain.IRepository;
 using Slendernotes.Infrastructure.Persistence.Context;
+using Slendernotes.Domain.Text;
+using Slendernotes.Domain.Abstractions;
+using MediatR;
 
-namespace Slendernotes.API.Repository
+namespace Slendernotes.Infrastructure.Repository
 {
     public class TextRepository : ITextRepository
     {
-        private IMongoCollection<Text> _texts;
-        public TextRepository(MongoDbContext context)
+        private readonly IMongoCollection<Text> _texts;
+        private readonly IMediator _mediator;
+        public TextRepository(MongoDbContext context, IMediator mediator)
         {
             _texts = context.Texts; //nome da collection de dentro do mongo
+            _mediator = mediator;
         }
 
         public async Task<ResultRepository<Text>> GetById(Guid id)
@@ -42,6 +46,19 @@ namespace Slendernotes.API.Repository
         public async Task<ResultRepository> Create(Text text)
         {
             await _texts.InsertOneAsync(text);
+
+            // Publica todos os eventos da entidade
+            IReadOnlyList<IDomainEvent> listDomainEvents = text.GetDomainEvents();
+            List<Task> publishTasks = listDomainEvents
+                .Select(evento => _mediator.Publish(evento))
+                .ToList();
+
+            await Task.WhenAll(publishTasks);
+
+
+            // Limpa os eventos após publicá-los
+            text.ClearDomainEvents();
+
             return ResultRepository.OperationCompleted();
         }
 

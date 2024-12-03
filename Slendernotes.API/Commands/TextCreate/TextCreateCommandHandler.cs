@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
-using Slendernotes.Domain.Entities;
 using Slendernotes.Domain.IRepository;
+using Slendernotes.Domain.Text;
 using Slendernotes.Domain.Common;
 
 namespace Slendernotes.API.Commands.TextCreate

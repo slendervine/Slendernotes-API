@@ -1,8 +1,7 @@
 ﻿using Slendernotes.Domain.Abstractions;
-using Slendernotes.Domain.Enums;
-using Slendernotes.Domain.Records;
+using Slendernotes.Domain.Text.Events;
 
-namespace Slendernotes.Domain.Entities
+namespace Slendernotes.Domain.Text
 {
     public sealed class Text : Entity
     {
@@ -22,10 +21,12 @@ namespace Slendernotes.Domain.Entities
             Category = category;
             CreateDate = DateTime.UtcNow;
             UserId = userId;
-            Validate(); 
+
+            Validate();
+            RaiseDomainEvents(new TextCreatedDomainEvent(id, userId));
         }
 
-        
+
 
         public void UpdateContent(string newTextBody)
         {

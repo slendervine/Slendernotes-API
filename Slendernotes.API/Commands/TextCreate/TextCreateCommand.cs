@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Slendernotes.API.DTO.Request;
-using Slendernotes.Domain.Enums;
 using Slendernotes.Domain.Common;
+using Slendernotes.Domain.Text;
 
 namespace Slendernotes.API.Commands.TextCreate
 {
